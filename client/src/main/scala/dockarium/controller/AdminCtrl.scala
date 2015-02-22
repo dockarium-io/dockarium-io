@@ -27,11 +27,8 @@ object AdminCtrl extends Controller {
 
     scope.dockerhost = DockerHost("localhost", "localhost", 2375)
 
-    // TODO type safety
-    scope.saveDockerConnection = () => {
-
-
-
+    scope.dynamic.saveDockerConnection = () => {
+      println("save docker connection")
       websocketConnectionService.send(R("saveDockerConnection", scope.dockerhost))
     }
 
@@ -41,7 +38,6 @@ object AdminCtrl extends Controller {
 
   trait AdminCtrlScope extends Scope {
     var dockerhost: DockerHost = js.native
-    var saveDockerConnection: js.Function0[_] = js.native
   }
 }
 
